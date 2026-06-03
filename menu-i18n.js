@@ -23,7 +23,7 @@ const COUNTRIES = [
 
 function renderFlag(flagCode) {
   const code = flagCode.toLowerCase();
-  return `<img class="country-flag-img" src="https://flagcdn.com/24x18/${code}.png" srcset="https://flagcdn.com/48x36/${code}.png 2x" alt="" width="28" height="21" loading="lazy" aria-hidden="true">`;
+  return `<img class="country-flag-img" src="flags/${code}.svg" alt="" width="28" height="21" loading="lazy" aria-hidden="true">`;
 }
 
 function setFlagElement(el, flagCode) {
@@ -550,20 +550,22 @@ function initCountryDropdown(defaultLangId) {
     trigger.setAttribute('aria-expanded', 'false');
   }
 
-  list.innerHTML = COUNTRIES.map(
-    (c) => `
-      <li
-        role="option"
-        class="country-option${c.id === selectedId ? ' selected' : ''}"
-        data-id="${c.id}"
-        aria-selected="${c.id === selectedId}"
-        tabindex="-1"
-      >
-        <span class="country-flag" aria-hidden="true">${renderFlag(c.flagCode)}</span>
-        <span class="country-name">${c.nativeName}</span>
-      </li>
-    `
-  ).join('');
+  if (!list.querySelector('.country-option')) {
+    list.innerHTML = COUNTRIES.map(
+      (c) => `
+        <li
+          role="option"
+          class="country-option${c.id === selectedId ? ' selected' : ''}"
+          data-id="${c.id}"
+          aria-selected="${c.id === selectedId}"
+          tabindex="-1"
+        >
+          <span class="country-flag" aria-hidden="true">${renderFlag(c.flagCode)}</span>
+          <span class="country-name">${c.nativeName}</span>
+        </li>
+      `
+    ).join('');
+  }
 
   updateTrigger(getCountry(selectedId));
   renderMultilangMenu(selectedId);
