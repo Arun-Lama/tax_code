@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Holy Grill multi-language menu — same signature burgers in your language. Prices in NPR.">
+  <title>Holy Grill | Multi-Language Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="multilang-page">
+  <header class="header scrolled" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🔥</span>
+        <span class="logo-text">Holy Grill</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html#menu">Menu</a></li>
+        <li><a href="multilang-menu.html" class="nav-active">Multi-Language Menu</a></li>
+        <li><a href="index.html#about">Our Story</a></li>
+        <li><a href="index.html#location">Visit Us</a></li>
+        <li><a href="index.html#menu" class="btn btn-sm">Order Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="multilang-hero">
+      <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+      </div>
+    </section>
+
+    <section class="menu multilang-menu-section" id="multilang-menu">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="ml-section-tag">Global Menu</span>
+          <h1 class="section-title" id="ml-section-title">Multi-Language Menu</h1>
+          <p class="section-desc" id="ml-section-desc">
+            Same holy burgers, your language. Prices always in Nepalese Rupees (NPR).
+          </p>
+        </div>
+
+        <div class="lang-selector-wrap">
+          <label id="lang-select-label" for="country-trigger">Select country / language</label>
+          <div class="country-dropdown" id="country-dropdown">
+            <input type="hidden" id="country-select" value="en">
+            <button
+              type="button"
+              class="country-trigger"
+              id="country-trigger"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-labelledby="lang-select-label"
+            >
+              <span class="country-flag" aria-hidden="true">🇬🇧</span>
+              <span class="country-name">United Kingdom</span>
+              <span class="country-chevron" aria-hidden="true"></span>
+            </button>
+            <ul
+              class="country-list"
+              id="country-list"
+              role="listbox"
+              aria-labelledby="lang-select-label"
+            ></ul>
+          </div>
+        </div>
+
+        <div class="menu-grid" id="ml-menu-grid"></div>
+
+        <p class="menu-note" id="ml-menu-note">
+          All burgers served with seasoned fries. Add extra patty +NPR 180 · Upgrade to sweet potato fries +NPR 80
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🔥</span>
+          <span class="logo-text">Holy Grill</span>
+        </a>
+        <p>Premium burgers on Eating Street. Purple Haze, Thamel.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html#menu">Menu</a></li>
+          <li><a href="multilang-menu.html">Multi-Language Menu</a></li>
+          <li><a href="index.html#about">Our Story</a></li>
+          <li><a href="index.html#location">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-hours">
+        <h4>Hours</h4>
+        <p>Daily from 11 AM<br>Closed never on your cravings</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Holy Grill. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="menu-i18n.js"></script>
+</body>
+</html>
