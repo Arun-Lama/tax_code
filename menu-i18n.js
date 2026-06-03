@@ -1,25 +1,34 @@
 const COUNTRIES = [
-  { id: 'en', flag: '🇬🇧', name: 'United Kingdom' },
-  { id: 'ne', flag: '🇳🇵', name: 'Nepal' },
-  { id: 'in', flag: '🇮🇳', name: 'India' },
-  { id: 'cn', flag: '🇨🇳', name: 'China' },
-  { id: 'jp', flag: '🇯🇵', name: 'Japan' },
-  { id: 'kr', flag: '🇰🇷', name: 'South Korea' },
-  { id: 'fr', flag: '🇫🇷', name: 'France' },
-  { id: 'de', flag: '🇩🇪', name: 'Germany' },
-  { id: 'es', flag: '🇪🇸', name: 'Spain' },
-  { id: 'it', flag: '🇮🇹', name: 'Italy' },
-  { id: 'br', flag: '🇧🇷', name: 'Brazil' },
-  { id: 'ru', flag: '🇷🇺', name: 'Russia' },
-  { id: 'sa', flag: '🇸🇦', name: 'Saudi Arabia' },
-  { id: 'th', flag: '🇹🇭', name: 'Thailand' },
-  { id: 'us', flag: '🇺🇸', name: 'United States' },
-  { id: 'mx', flag: '🇲🇽', name: 'Mexico' },
-  { id: 'tr', flag: '🇹🇷', name: 'Turkey' },
-  { id: 'vn', flag: '🇻🇳', name: 'Vietnam' },
-  { id: 'id', flag: '🇮🇩', name: 'Indonesia' },
-  { id: 'au', flag: '🇦🇺', name: 'Australia' },
+  { id: 'en', flagCode: 'gb', nativeName: 'United Kingdom' },
+  { id: 'ne', flagCode: 'np', nativeName: 'नेपाल' },
+  { id: 'in', flagCode: 'in', nativeName: 'भारत' },
+  { id: 'cn', flagCode: 'cn', nativeName: '中国' },
+  { id: 'jp', flagCode: 'jp', nativeName: '日本' },
+  { id: 'kr', flagCode: 'kr', nativeName: '대한민국' },
+  { id: 'fr', flagCode: 'fr', nativeName: 'France' },
+  { id: 'de', flagCode: 'de', nativeName: 'Deutschland' },
+  { id: 'es', flagCode: 'es', nativeName: 'España' },
+  { id: 'it', flagCode: 'it', nativeName: 'Italia' },
+  { id: 'br', flagCode: 'br', nativeName: 'Brasil' },
+  { id: 'ru', flagCode: 'ru', nativeName: 'Россия' },
+  { id: 'sa', flagCode: 'sa', nativeName: 'المملكة العربية السعودية' },
+  { id: 'th', flagCode: 'th', nativeName: 'ประเทศไทย' },
+  { id: 'us', flagCode: 'us', nativeName: 'United States of America' },
+  { id: 'mx', flagCode: 'mx', nativeName: 'México' },
+  { id: 'tr', flagCode: 'tr', nativeName: 'Türkiye' },
+  { id: 'vn', flagCode: 'vn', nativeName: 'Việt Nam' },
+  { id: 'id', flagCode: 'id', nativeName: 'Indonesia' },
+  { id: 'au', flagCode: 'au', nativeName: 'Australia' },
 ];
+
+function renderFlag(flagCode) {
+  const code = flagCode.toLowerCase();
+  return `<img class="country-flag-img" src="https://flagcdn.com/24x18/${code}.png" srcset="https://flagcdn.com/48x36/${code}.png 2x" alt="" width="28" height="21" loading="lazy" aria-hidden="true">`;
+}
+
+function setFlagElement(el, flagCode) {
+  el.innerHTML = renderFlag(flagCode);
+}
 
 const UI = {
   en: {
@@ -511,8 +520,8 @@ function initCountryDropdown(defaultLangId) {
   }
 
   function updateTrigger(country) {
-    trigger.querySelector('.country-flag').textContent = country.flag;
-    trigger.querySelector('.country-name').textContent = country.name;
+    setFlagElement(trigger.querySelector('.country-flag'), country.flagCode);
+    trigger.querySelector('.country-name').textContent = country.nativeName;
     hiddenInput.value = country.id;
   }
 
@@ -550,8 +559,8 @@ function initCountryDropdown(defaultLangId) {
         aria-selected="${c.id === selectedId}"
         tabindex="-1"
       >
-        <span class="country-flag" aria-hidden="true">${c.flag}</span>
-        <span class="country-name">${c.name}</span>
+        <span class="country-flag" aria-hidden="true">${renderFlag(c.flagCode)}</span>
+        <span class="country-name">${c.nativeName}</span>
       </li>
     `
   ).join('');

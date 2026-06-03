@@ -918,9 +918,21 @@ ul {
   box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15);
 }
 
-.country-trigger .country-flag {
-  font-size: 1.5rem;
-  line-height: 1;
+.country-trigger .country-flag,
+.country-option .country-flag {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.country-flag-img {
+  display: block;
+  width: 28px;
+  height: 21px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 .country-trigger .country-name {
@@ -986,11 +998,6 @@ ul {
 
 .country-option.selected .country-name {
   color: var(--yellow-400);
-}
-
-.country-option .country-flag {
-  font-size: 1.35rem;
-  line-height: 1;
 }
 
 .country-option .country-name {
