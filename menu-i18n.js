@@ -19,7 +19,59 @@ const COUNTRIES = [
   { id: 'vn', flagCode: 'vn', nativeName: 'Việt Nam' },
   { id: 'id', flagCode: 'id', nativeName: 'Indonesia' },
   { id: 'au', flagCode: 'au', nativeName: 'Australia' },
+  { id: 'pk', flagCode: 'pk', nativeName: 'پاکستان' },
+  { id: 'bd', flagCode: 'bd', nativeName: 'বাংলাদেশ' },
+  { id: 'lk', flagCode: 'lk', nativeName: 'ශ්‍රී ලංකාව' },
+  { id: 'ae', flagCode: 'ae', nativeName: 'الإمارات العربية المتحدة' },
+  { id: 'qa', flagCode: 'qa', nativeName: 'قطر' },
+  { id: 'kw', flagCode: 'kw', nativeName: 'الكويت' },
+  { id: 'ph', flagCode: 'ph', nativeName: 'Pilipinas' },
+  { id: 'nl', flagCode: 'nl', nativeName: 'Nederland' },
+  { id: 'pl', flagCode: 'pl', nativeName: 'Polska' },
+  { id: 'pt', flagCode: 'pt', nativeName: 'Portugal' },
+  { id: 'gr', flagCode: 'gr', nativeName: 'Ελλάδα' },
+  { id: 'il', flagCode: 'il', nativeName: 'יִשְׂרָאֵל' },
+  { id: 'eg', flagCode: 'eg', nativeName: 'مصر' },
+  { id: 'my', flagCode: 'my', nativeName: 'Malaysia' },
+  { id: 'ca', flagCode: 'ca', nativeName: 'Canada' },
+  { id: 'nz', flagCode: 'nz', nativeName: 'Aotearoa New Zealand' },
+  { id: 'ie', flagCode: 'ie', nativeName: 'Éire' },
+  { id: 'ch', flagCode: 'ch', nativeName: 'Schweiz' },
+  { id: 'at', flagCode: 'at', nativeName: 'Österreich' },
+  { id: 'se', flagCode: 'se', nativeName: 'Sverige' },
+  { id: 'no', flagCode: 'no', nativeName: 'Norge' },
+  { id: 'dk', flagCode: 'dk', nativeName: 'Danmark' },
+  { id: 'fi', flagCode: 'fi', nativeName: 'Suomi' },
+  { id: 'cz', flagCode: 'cz', nativeName: 'Česko' },
+  { id: 'hu', flagCode: 'hu', nativeName: 'Magyarország' },
+  { id: 'ro', flagCode: 'ro', nativeName: 'România' },
+  { id: 'ua', flagCode: 'ua', nativeName: 'Україна' },
+  { id: 'ir', flagCode: 'ir', nativeName: 'ایران' },
+  { id: 'kh', flagCode: 'kh', nativeName: 'កម្ពុជា' },
+  { id: 'mm', flagCode: 'mm', nativeName: 'မြန်မာ' },
+  { id: 'tw', flagCode: 'tw', nativeName: '臺灣' },
+  { id: 'hk', flagCode: 'hk', nativeName: '香港' },
+  { id: 'za', flagCode: 'za', nativeName: 'South Africa' },
+  { id: 'ar', flagCode: 'ar', nativeName: 'Argentina' },
+  { id: 'co', flagCode: 'co', nativeName: 'Colombia' },
+  { id: 'sg', flagCode: 'sg', nativeName: 'Singapore' },
+  { id: 'pe', flagCode: 'pe', nativeName: 'Perú' },
+  { id: 'jo', flagCode: 'jo', nativeName: 'الأردن' },
+  { id: 'lb', flagCode: 'lb', nativeName: 'لبنان' },
 ];
+
+const LANG_FALLBACK = {
+  ae: 'sa', qa: 'sa', kw: 'sa', eg: 'sa', jo: 'sa', lb: 'sa',
+  at: 'de', ch: 'de',
+  ca: 'en', ie: 'en', nz: 'en', za: 'en', sg: 'en', my: 'en', lk: 'en',
+  pt: 'br',
+  tw: 'cn', hk: 'cn',
+  ar: 'es', co: 'es', pe: 'es',
+  no: 'se', dk: 'se', fi: 'se',
+  cz: 'de', hu: 'de', ro: 'de',
+};
+
+const RTL_LANGS = new Set(['sa', 'ae', 'qa', 'kw', 'eg', 'jo', 'lb', 'ir', 'il']);
 
 function renderFlag(flagCode) {
   const code = flagCode.toLowerCase();
@@ -229,6 +281,126 @@ const UI = {
     selectLabel: 'Select country / language',
     note: 'All burgers served with seasoned fries. Add extra patty +NPR 180 · Upgrade to sweet potato fries +NPR 80',
     bestSeller: 'Best Seller',
+    priceLabel: 'NPR',
+  },
+  pk: {
+    pageTitle: 'کثیر اللسانی مینو',
+    tag: 'عالمی مینو',
+    title: 'کثیر اللسانی مینو',
+    desc: 'وahi mukhtasar burgers، aap ki zubaan mein. Qeemat hamesha Nepali Rupee (NPR) mein.',
+    selectLabel: 'Mulk / zubaan chunein',
+    note: 'Tamam burgers masala fries ke sath. Extra patty +NPR 180 · Sweet potato fries +NPR 80',
+    bestSeller: 'Sab se zyada bikne wala',
+    priceLabel: 'NPR',
+  },
+  bd: {
+    pageTitle: 'বহুভাষিক মেনু',
+    tag: 'বিশ্ব মেনু',
+    title: 'বহুভাষিক মেনু',
+    desc: 'একই সিগনেচার বার্গার, আপনার ভাষায়। দাম সবসময় নেপালি রুপিতে (NPR)।',
+    selectLabel: 'দেশ / ভাষা নির্বাচন করুন',
+    note: 'সব বার্গার মশলাদার ফ্রাইজ সহ। অতিরিক্ত প্যাটি +NPR 180 · সুইট পোটেটো ফ্রাই +NPR 80',
+    bestSeller: 'সর্বাধিক বিক্রিত',
+    priceLabel: 'NPR',
+  },
+  ph: {
+    pageTitle: 'Multi-Language na Menu',
+    tag: 'Pandaigdigang Menu',
+    title: 'Multi-Language na Menu',
+    desc: 'Parehong signature burgers, sa iyong wika. Presyo laging sa Nepalese Rupees (NPR).',
+    selectLabel: 'Pumili ng bansa / wika',
+    note: 'Lahat ng burger may seasoned fries. Dagdag na patty +NPR 180 · Sweet potato fries +NPR 80',
+    bestSeller: 'Pinakamabenta',
+    priceLabel: 'NPR',
+  },
+  nl: {
+    pageTitle: 'Meertalig Menu',
+    tag: 'Wereldmenu',
+    title: 'Meertalig Menu',
+    desc: 'Dezelfde signature burgers, in jouw taal. Prijzen altijd in Nepalese roepies (NPR).',
+    selectLabel: 'Kies land / taal',
+    note: 'Alle burgers met gekruide friet. Extra patty +NPR 180 · Zoete-aardappelfriet +NPR 80',
+    bestSeller: 'Bestverkocht',
+    priceLabel: 'NPR',
+  },
+  pl: {
+    pageTitle: 'Menu Wielojęzyczne',
+    tag: 'Menu Globalne',
+    title: 'Menu Wielojęzyczne',
+    desc: 'Te same burgery, w twoim języku. Ceny zawsze w rupiach nepalskich (NPR).',
+    selectLabel: 'Wybierz kraj / język',
+    note: 'Wszystkie burgery z frytkami. Dodatkowa kotlet +NPR 180 · Frytki z batatów +NPR 80',
+    bestSeller: 'Bestseller',
+    priceLabel: 'NPR',
+  },
+  gr: {
+    pageTitle: 'Πολυγλωσσικό Μενού',
+    tag: 'Παγκόσμιο Μενού',
+    title: 'Πολυγλωσσικό Μενού',
+    desc: 'Τα ίδια signature burgers, στη γλώσσα σας. Τιμές πάντα σε νεπalese ρουπίες (NPR).',
+    selectLabel: 'Επιλέξτε χώρα / γλώσσα',
+    note: 'Όλα τα burgers με πατάτες τηγανητές. Επιπλέον μπιφτέκι +NPR 180 · Γλυκοπατάτες +NPR 80',
+    bestSeller: 'Πιο δημοφιλές',
+    priceLabel: 'NPR',
+  },
+  il: {
+    pageTitle: 'תפריט רב-לשוני',
+    tag: 'תפריט עולמי',
+    title: 'תפריט רב-לשוני',
+    desc: 'אותם בургרים מיוחדים, בשפה שלך. מחירים תמיד בrupi נepali (NPR).',
+    selectLabel: 'בחר מדינה / שפה',
+    note: 'כל הבurgers עם צ\'יפס מתובל. פatti נוסף +NPR 180 · צ\'יפס בטata +NPR 80',
+    bestSeller: 'הנמכר ביותר',
+    priceLabel: 'NPR',
+  },
+  ir: {
+    pageTitle: 'منوی چندزبانه',
+    tag: 'منوی جهانی',
+    title: 'منوی چندزبانه',
+    desc: 'همان برگرهای ویژه، به زبان شما. قیمت‌ها همیشه به روپیه نepal (NPR).',
+    selectLabel: 'کشور / زبان را انتخاب کنید',
+    note: 'همه برگرها با سیب‌زمینی سرخ‌کرده. پتی اضافه +NPR 180 · سیب‌زمینی شیرین +NPR 80',
+    bestSeller: 'پرفروش‌ترین',
+    priceLabel: 'NPR',
+  },
+  kh: {
+    pageTitle: 'ម៉ឺនុយពหลายភាសា',
+    tag: 'ម៉ឺនុយពិភពលោក',
+    title: 'ម៉ឺនុយពหลายភាសា',
+    desc: 'Burger ដូចគ្នា ជាភាសារបស់អ្នក។ តម្លៃជានិច Nepalese Rupee (NPR)។',
+    selectLabel: 'ជ្រើសរើសប្រទេស / ភាសា',
+    note: 'Burger ទាំងអស់មាន french fries។ Patty បន្ថែម +NPR 180 · Sweet potato fries +NPR 80',
+    bestSeller: 'លក់ដាច់បំផុត',
+    priceLabel: 'NPR',
+  },
+  mm: {
+    pageTitle: 'ဘာသာစကားများစွာ မီနူး',
+    tag: 'ကမ္ဘာ့မီနူး',
+    title: 'ဘာသာစကားများစွာ မီနူး',
+    desc: 'တူညီသော signature burgers၊ သင့်ဘာသာစကားဖြင့်။ စျေးနှုန်းသည် Nepalese Rupee (NPR) ဖြစ်သည်။',
+    selectLabel: 'နိုင်ငံ / ဘာသာစကား ရွေးချယ်ပါ',
+    note: 'Burger အားလုံး fries ပါဝင်။ Patty ထပ်ထည့် +NPR 180 · Sweet potato fries +NPR 80',
+    bestSeller: 'အရောင်းရဆုံး',
+    priceLabel: 'NPR',
+  },
+  se: {
+    pageTitle: 'Flerspråkig Meny',
+    tag: 'Global Meny',
+    title: 'Flerspråkig Meny',
+    desc: 'Samma signaturburgare, på ditt språk. Priser alltid i nepalesiska rupier (NPR).',
+    selectLabel: 'Välj land / språk',
+    note: 'Alla burgare med kryddade pommes. Extra patty +NPR 180 · Sötpotatispommes +NPR 80',
+    bestSeller: 'Bästsäljare',
+    priceLabel: 'NPR',
+  },
+  ua: {
+    pageTitle: 'Багатомовне меню',
+    tag: 'Світове меню',
+    title: 'Багатомовне меню',
+    desc: 'Ті самі фірмові бургери вашою мовою. Ціни завжди в непальських рupіях (NPR).',
+    selectLabel: 'Оберіть країну / мову',
+    note: 'Усі бургери з картоплею фрі. Дод. котлета +NPR 180 · Батат фрі +NPR 80',
+    bestSeller: 'Хіт продажів',
     priceLabel: 'NPR',
   },
 };
@@ -456,8 +628,25 @@ const MENU_ITEMS = [
   },
 ];
 
+function resolveLang(langId) {
+  return UI[langId] ? langId : (LANG_FALLBACK[langId] || 'en');
+}
+
+function getUI(langId) {
+  return UI[resolveLang(langId)] || UI.en;
+}
+
 function getTranslation(item, langId) {
-  return item.t[langId] || item.t.en;
+  if (item.t[langId]) return item.t[langId];
+  const fallback = LANG_FALLBACK[langId];
+  if (fallback && item.t[fallback]) return item.t[fallback];
+  return item.t.en;
+}
+
+function isRtl(langId) {
+  if (RTL_LANGS.has(langId)) return true;
+  const fallback = LANG_FALLBACK[langId];
+  return fallback ? RTL_LANGS.has(fallback) : false;
 }
 
 function formatPrice(npr) {
@@ -465,12 +654,12 @@ function formatPrice(npr) {
 }
 
 function renderMultilangMenu(langId) {
-  const ui = UI[langId] || UI.en;
+  const ui = getUI(langId);
   const grid = document.getElementById('ml-menu-grid');
-  const isRtl = langId === 'sa';
+  const resolved = resolveLang(langId);
 
-  document.documentElement.lang = langId === 'en' || langId === 'us' || langId === 'au' ? 'en' : langId;
-  document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+  document.documentElement.lang = resolved === 'en' || resolved === 'us' || resolved === 'au' ? 'en' : resolved;
+  document.documentElement.dir = isRtl(langId) ? 'rtl' : 'ltr';
 
   document.getElementById('ml-section-tag').textContent = ui.tag;
   document.getElementById('ml-section-title').textContent = ui.title;
@@ -550,22 +739,20 @@ function initCountryDropdown(defaultLangId) {
     trigger.setAttribute('aria-expanded', 'false');
   }
 
-  if (!list.querySelector('.country-option')) {
-    list.innerHTML = COUNTRIES.map(
-      (c) => `
-        <li
-          role="option"
-          class="country-option${c.id === selectedId ? ' selected' : ''}"
-          data-id="${c.id}"
-          aria-selected="${c.id === selectedId}"
-          tabindex="-1"
-        >
-          <span class="country-flag" aria-hidden="true">${renderFlag(c.flagCode)}</span>
-          <span class="country-name">${c.nativeName}</span>
-        </li>
-      `
-    ).join('');
-  }
+  list.innerHTML = COUNTRIES.map(
+    (c) => `
+      <li
+        role="option"
+        class="country-option${c.id === selectedId ? ' selected' : ''}"
+        data-id="${c.id}"
+        aria-selected="${c.id === selectedId}"
+        tabindex="-1"
+      >
+        <span class="country-flag" aria-hidden="true">${renderFlag(c.flagCode)}</span>
+        <span class="country-name">${c.nativeName}</span>
+      </li>
+    `
+  ).join('');
 
   updateTrigger(getCountry(selectedId));
   renderMultilangMenu(selectedId);
